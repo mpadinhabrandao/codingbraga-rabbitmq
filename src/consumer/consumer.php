@@ -8,13 +8,13 @@ $channel->queue_declare('task_queue', false, true, false, false);
 echo " [*] Waiting for messages. To exit press CTRL+C\n";
 
 $callback = function ($msg) {
-    echo '>>> Received ';
+    echo ">>> Received \n";
     list($l, $n) = explode(' ', $msg->body);
     for ($i=0; $i < $n; $i++) { 
-        echo $l;
+        echo "${l}\n";
         sleep(1);
     }
-    echo " >>> Done\n";
+    echo ">>> Done\n";
     $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
 };
 $channel->basic_qos(null, 1, null);

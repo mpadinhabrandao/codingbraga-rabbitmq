@@ -11,11 +11,11 @@ print(' [*] Waiting for messages. To exit press CTRL+C')
 
 
 def callback(ch, method, properties, body):
-    print(">>> Received ", end="")
+    print(">>> Received ")
     _body = body.decode("utf-8") 
     l, n = _body.split()
     for _ in range(int(n)):
-        print (l, end="")
+        print (l)
         time.sleep(1)
 
     print(" >>> Done")
